@@ -9,5 +9,6 @@
 	</head>
 	<body>
 		<p>Has visto <a href="/">El inicio</a> <c:out value="${counter}"/></p>
+		<a href="/reset">Reset</a>
 	</body>
 </html>

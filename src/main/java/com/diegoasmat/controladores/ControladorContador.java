@@ -23,8 +23,30 @@ public class ControladorContador {
 		return "index.jsp";
 	}
 	
+	@RequestMapping(value="/2", method = RequestMethod.GET)
+	public String renderIndex2(HttpSession session) {
+		if(session.getAttribute("counter")!=null) {
+			int counter = (int) session.getAttribute("counter");
+			
+			session.setAttribute("counter", counter+2);
+			
+		}
+		else {
+			session.setAttribute("counter", 2);
+		}
+		return "index.jsp";
+	}
+	
 	@RequestMapping(value="/contador",method = RequestMethod.GET)
 	public String renderCounter(HttpSession session) {
 		return "contador.jsp";
+	}
+	@RequestMapping(value="/reset",method = RequestMethod.GET)
+	public String resetCounter(HttpSession session) {
+		
+		
+		session.setAttribute("counter", 0);
+		
+		return "redirect:/contador";
 	}
 }
